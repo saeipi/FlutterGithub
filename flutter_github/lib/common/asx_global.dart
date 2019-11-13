@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_github/models/asx_profile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'asx_network.dart';
+
 // 提供五套可选主题色
 const _themes = <MaterialColor>[
   Colors.blue,
@@ -44,12 +46,10 @@ class ASXGlobal {
       ..maxCount = 100;
 
     //初始化网络请求相关配置
-    //Git.init();
+    ASXGit.init();
   }
 
   // 持久化Profile信息
   static saveProfile() =>
       _prefs.setString("profile", jsonEncode(profile.toJson()));
 }
-
-class ASXNetCache {}
